@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Pipeline Snapshot</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+        <link href="styles.css" rel="stylesheet">  
+    </head>
+
+    <body>
+
+        <div class="row" id="header">
+            <div class="col-1"></div>
+            <div class="col-10">
+                <h2>Pipeline Snapshot</h2>
+            </div>
+            <div class="col-1"></div>
+        </div>
+
+        <div class="row">
+            <div class="col-1"></div>
+            <div class="col-10">
+                <div class="row">
+                    <div class ="col-4">
+                        <h4 class="tableHeaders">Pre-Qualified Pipeline</h4>
+                        <table class="table table-striped" id="preQualifiedTable">
+                            <thead>
+                                <tr>
+                                    <th>Number</th>
+                                    <th>Age</th>
+                                </tr>
+                            </thead>
+                                <tr>
+                                    <th>200</th>
+                                    <th>32</th>
+                                </tr>
+                        </table>
+                    </div>
+                    <div class ="col-4">
+                        <h4 class="tableHeaders" id="qualifiedTable">Qualified Pipeline</h4>
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Number</th>
+                                    <th>Age</th>
+                                </tr>
+                            </thead>
+                            <tr>
+                                <th>122</th>
+                                <th>22</th>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class ="col-4">
+                        <h4 class="tableHeaders">Total Pipeline</h4>
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Number</th>
+                                    <th>Age</th>
+                                </tr>
+                            </thead>
+                                <tr>
+                                    <th>322</th>
+                                    <th>54</th>
+                                </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="col-1"></div>
+        </div>
+
+        <div class="row" id="chartsRow">
+            <div class="col-1"></div>
+            <div class="col-5">
+                <h3>Number</h3>
+                <canvas id="numberChart"></canvas>
+            </div>
+            <div class="col-5">
+                <h3>Age</h3>
+                <canvas id="ageChart"></canvas>
+            </div>
+            <div class="col-1"></div>
+        </div>
+
+        <script src="../node_modules/chart.js/dist/Chart.js"></script>
+        <script src="../node_modules/chart.js/dist/Chart.bundle.js"></script>
+        <script src="../utils/utils.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script> 
+        <script src="pipeline.js"></script>
+        
+    </body>
+
+</html>
