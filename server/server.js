@@ -17,29 +17,19 @@ app.get('/', (req, res) => {
     res.sendFile(path.resolve('public/pipeline.html'));
 });
 
-//queries
-io.on('connection', (socket) => { 
-    console.log('New user connected');
-
-    // socket.emit('newMessage', generateMessage('Admin', 'Welcome to the chat app'));
-
-    // socket.broadcast.emit('newMessage', generateMessage('Admin', 'New user joined'));
-
-    // socket.on('createMessage', (message, callback) => {
-    //     console.log('createMessage', message);
-    //     io.emit('newMessage', generateMessage(message.from,message.text));
-    //     callback('This is from the server');
-    // });
-
-    // socket.on('disconnect', () => {
-    //     console.log('User was disconnected');
-    // });
+io.on('connection', function(socket){
+    socket.on('chart', function(data){
+        
+        client.query('SELECT * FROM num')
+            .then(numResult => {
+                client.query('SELECT * FROM age')
+                    .then(ageResult => {
+                        io.emit('chart', {numResult, ageResult});
+                    });
+            })
+            .catch(e => console.log(e.stack));
+    });
 });
-
-// client.query('SELECT * FROM num', (err, res) => {
-//     console.log(err, res)
-//     client.end()
-// });
 
 server.listen(port,() => {
     console.log(`Server is up on port ${port}`);
