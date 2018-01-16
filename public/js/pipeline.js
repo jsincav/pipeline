@@ -37,7 +37,7 @@ function setChartData (data) {
     numberData = {
         labels: ["Day 1", "Day 2", "Day 3", "Day 4", "Day 5", "Day 6", "Day 7"],
         datasets: [{
-            label: 'Pre-Qualified Pipeline',
+            label: 'Pre-Qualified',
             backgroundColor: window.chartColors.red,
             borderColor: window.chartColors.red,
             data: [
@@ -51,7 +51,7 @@ function setChartData (data) {
             ],
             fill: false,
         }, {
-            label: 'Qualified Pipeline',
+            label: 'Qualified',
             fill: false,
             backgroundColor: window.chartColors.blue,
             borderColor: window.chartColors.blue,
@@ -65,7 +65,7 @@ function setChartData (data) {
                 rows[6].num_post_q,
             ],
         }, {
-            label: 'Total Pipeline',
+            label: 'Total',
             fill: false,
             backgroundColor: window.chartColors.grey,
             borderColor: window.chartColors.grey,
