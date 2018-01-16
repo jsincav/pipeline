@@ -31,8 +31,7 @@ function setTableData (data) {
 }
 
 function setChartData (data) {
-    $('#numberChart').empty();
-    $('#ageChart').empty();
+    
     var rows = data.numResult.rows;
    
     numberData = {
@@ -133,6 +132,11 @@ function setChartData (data) {
 }
 
 function generateCharts() {
+    $('#numberChart').remove();
+    $('#ageChart').remove();
+    $('#numberChartDiv').append('<canvas id="numberChart"></canvas>');
+    $('#ageChartDiv').append('<canvas id="ageChart"></canvas>');
+
     var ctx = $('#numberChart');
 
     var numberChart = new Chart(ctx, {
