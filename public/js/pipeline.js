@@ -15,6 +15,7 @@ socket.on('chart', function(data){
 });
 
 socket.on('update', function (data) {
+    console.log(data);
     socket.emit('chart');
 });
 
