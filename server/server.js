@@ -17,18 +17,25 @@ app.get('/', (req, res) => {
     res.sendFile(path.resolve('public/pipeline.html'));
 });
 
+var query = client.query("LISTEN watchers");
+
 io.on('connection', function(socket){
     socket.on('chart', function(data){
         
-        client.query('SELECT * FROM num')
+        client.query('SELECT * FROM num ORDER BY num_date')
             .then(numResult => {
-                client.query('SELECT * FROM age')
+                client.query('SELECT * FROM age ORDER BY age_date')
                     .then(ageResult => {
                         io.emit('chart', {numResult, ageResult});
                     });
             })
             .catch(e => console.log(e.stack));
     });
+
+    client.on('notification', (data) => {
+        socket.emit('update', {message: data});   
+    });
+
 });
 
 server.listen(port,() => {

@@ -4,7 +4,7 @@ var ageData;
 
 socket.on('connect', function () {
     console.log('connected to server');
-    socket.emit("chart");
+    socket.emit('chart');
 });
 
 socket.on('chart', function(data){
@@ -12,6 +12,10 @@ socket.on('chart', function(data){
     setTableData(data);
     setChartData(data);
     generateCharts();
+});
+
+socket.on('update', function (data) {
+    socket.emit('chart');
 });
 
 function setTableData (data) {
@@ -26,6 +30,8 @@ function setTableData (data) {
 }
 
 function setChartData (data) {
+    $('#numberChart').empty();
+    $('#ageChart').empty();
     var rows = data.numResult.rows;
    
     numberData = {
