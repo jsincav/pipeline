@@ -6,6 +6,7 @@
   "dependencies": {
     "chart.js": "^2.7.1",
     "express": "^4.16.2",
+    "hbs": "^4.0.1",
     "node": "^9.2.0",
     "pg": "^7.4.1",
     "socket.io": "^1.7.4"
