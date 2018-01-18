@@ -4,6 +4,10 @@
     color: white;
 }
 
+#signIn {
+    padding-top: 75px;
+}
+
 .row {
     padding-top: 10px;
 }

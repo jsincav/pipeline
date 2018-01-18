@@ -1,8 +1,13 @@
 const express = require('express');
 const hbs = require('hbs');
+var passport = require('passport');
 const path = require('path');
 const http = require('http');
 const socketIO = require('socket.io');
+var session = require('express-session');
+var cookieParser = require('cookie-parser');
+var bodyParser = require("body-parser");
+var flash = require('connect-flash');
 
 var {client} = require('./db');
 
@@ -12,22 +17,23 @@ var app = express();
 var server = http.createServer(app);
 var io = socketIO(server);
 
+//handlebars
 hbs.registerPartials(path.join(__dirname, '../views/partials'));
-console.log(path.join(__dirname, '../views'));
 app.set('view engine', 'hbs');
+
 app.use(express.static(publicPath));
 
-app.get('/', (req, res) => {
-    res.render('index.hbs', {
-        pageTitle: 'Lingraphica Dashboards'
-    });
-});
+require(path.join(__dirname, './configuration/passport'))(passport); //pass passport for configuration
 
-app.get('/pipeline', (req, res) => {
-    res.render('pipeline.hbs', {
-        pageTitle: 'Pipeline Snaphot'
-    });
-});
+app.use(cookieParser());
+app.use(bodyParser());
+
+app.use(session({ secret: "sdfgsdfgsdhrthrth" }));
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(flash());
+
+require(path.join(__dirname, './routes'))(app, passport);
 
 var query = client.query("LISTEN watchers");
 
